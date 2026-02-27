@@ -35,9 +35,76 @@ body {
   gap: 3rem;
 }
 
-/* Header */
+/* Header / Hero */
 header {
   padding-top: 2rem;
+}
+
+.hero {
+  padding-top: 4rem;
+  padding-bottom: 1rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.hero .title {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.hero .tagline {
+  margin-top: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.hero-cta {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 0.65rem 1.4rem;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.btn-primary:hover {
+  opacity: 0.85;
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: 0.65rem 1.4rem;
+  background: transparent;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 header h1 {
@@ -84,8 +151,9 @@ section h2 {
   margin-bottom: 1rem;
 }
 
-/* Bio */
-.bio p {
+/* Bio / About */
+.bio p,
+.about p {
   color: var(--text);
   font-size: 1rem;
 }
@@ -186,11 +254,16 @@ footer p {
 
 /* Responsive */
 @media (max-width: 480px) {
-  header h1 {
+  header h1,
+  .hero h1 {
     font-size: 2rem;
   }
 
   .job-header {
+    flex-direction: column;
+  }
+
+  .hero-cta {
     flex-direction: column;
   }
 }

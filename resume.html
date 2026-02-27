@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shane Ossa — Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <h1>Shane Ossa</h1>
+      <p class="title">Director of Support Operations &amp; Supportability</p>
+      <nav class="links">
+        <a href="https://www.linkedin.com/in/shaneossa/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="bio">
+      <h2>About</h2>
+      <p>
+        Exec-level leader specializing in customer experience operations, technical support, and AI deployment.
+        Currently Director of Supportability at Cloudflare, where I've scaled global teams, driven measurable
+        reductions in support contact and escalation rates, and built technical enablement programs that improve
+        time-to-productivity. I bring cross-functional expertise across product, engineering, and customer-facing
+        teams &mdash; guided by empathy, accountability, and a focus on delivering measurable impact.
+      </p>
+    </section>
+
+    <section class="achievements">
+      <h2>Key Achievements</h2>
+      <ul>
+        <li><strong>Team:</strong> Scaled Cloudflare's global technical support team from 20 to 200, including the development of internal &amp; external AI tooling.</li>
+        <li><strong>Product:</strong> Delivered 25% support contact rate reduction YoY by driving product enhancements and creating self-service content.</li>
+        <li><strong>Engineering:</strong> Delivered 20% reduction in engineering escalation rate YoY through tooling and process improvements.</li>
+        <li><strong>Enablement:</strong> Created technical enablement programs for complex products, improving time-to-productivity by 50%.</li>
+        <li><strong>Ops:</strong> Delivered measurable efficiency gains (mean time-to-resolve) by operationalizing best practices for global customer-facing teams.</li>
+      </ul>
+    </section>
+
+    <section class="experience">
+      <h2>Experience</h2>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Director of Supportability</span>
+          <span class="job-meta">Cloudflare &middot; 2023 &ndash; Present</span>
+        </div>
+        <p>Leading the Global Supportability and Technical Enablement teams. Responsible for driving support contact and escalation rate reduction, CSAT improvements, onboarding and continuous upskilling of Support, Solutions, and Success Engineers, and GTM readiness of customer-facing teams.</p>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Senior Manager, Supportability &amp; Training</span>
+          <span class="job-meta">Cloudflare &middot; 2022 &ndash; 2023</span>
+        </div>
+        <p>Managed the Supportability and Technical Enablement teams. Drove cross-functional collaboration with Product &amp; Engineering to deliver measurable CX improvements. Owned Support voice-of-the-customer and GTM readiness programs.</p>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Support Manager, Training &amp; Policy</span>
+          <span class="job-meta">Cloudflare &middot; 2019 &ndash; 2022</span>
+        </div>
+        <p>Led L&amp;D professionals, owned technical enablement, global tooling &amp; processes, and the Support QA program.</p>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Technical Training Program Manager</span>
+          <span class="job-meta">Cloudflare &middot; 2017 &ndash; 2019</span>
+        </div>
+        <p>Built and managed a blended technical enablement program. Improved Support KPIs and ensured the team was prepared for all new product releases.</p>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Technical Training Instructor</span>
+          <span class="job-meta">SunPower &middot; 2015 &ndash; 2017</span>
+        </div>
+        <p>Technical trainer, instructional designer, and courseware developer for customers, partners, and employees on complex products and software.</p>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Solar Engineer</span>
+          <span class="job-meta">Occidental Power Solar &amp; Cogeneration &middot; 2005 &ndash; 2015</span>
+        </div>
+        <p>Solar PV and thermal design engineer, project manager, and department head.</p>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <h2>Contact</h2>
+      <p>
+        <!-- Email is obfuscated to reduce spam harvesting -->
+        <a href="#" id="email-link">Show email</a>
+        &nbsp;&middot;&nbsp;
+        <a href="https://www.linkedin.com/in/shaneossa/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </p>
+    </section>
+
+    <footer>
+      <p>&copy; <span id="year"></span> Shane Ossa</p>
+    </footer>
+
+  </div>
+
+  <script>
+    // Dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Obfuscated email reveal
+    const user = 'shane.ossa';
+    const domain = 'gmail.com';
+    const emailLink = document.getElementById('email-link');
+    emailLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      this.href = 'mailto:' + user + '@' + domain;
+      this.textContent = user + '@' + domain;
+    });
+  </script>
+</body>
+</html>
