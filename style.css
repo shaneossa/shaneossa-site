@@ -117,6 +117,21 @@ section h2 {
   border-bottom-color: var(--accent);
 }
 
+/* ── Home link (resume/game pages) ── */
+.home-link {
+  display: inline-block;
+  font-size: 0.82rem;
+  color: var(--muted);
+  text-decoration: none;
+  margin-bottom: 1.25rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.home-link:hover {
+  color: var(--accent);
+}
+
 /* ── Footer ── */
 footer {
   padding-bottom: 2rem;
@@ -135,7 +150,21 @@ footer p {
     gap: 1.25rem;
   }
 
-  .hero-text h1 {
+.hero-name-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.hero-name-link:hover h1 {
+  color: var(--accent);
+  transition: color 0.2s;
+}
+
+.hero-photo {
+  cursor: pointer;
+}
+
+.hero-text h1 {
     font-size: 1.9rem;
   }
 }
