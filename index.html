@@ -4,30 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shane Ossa</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  <!-- Tron grid canvas -->
+  <canvas id="grid"></canvas>
+
   <div class="container">
 
     <header class="hero">
-      <img src="headshot.jpg" alt="Shane Ossa" class="hero-photo" />
+      <img src="headshot-duotone.jpg" alt="Shane Ossa" class="hero-photo" />
       <div class="hero-text">
         <h1>Shane Ossa</h1>
-        <div class="hero-cta">
-          <a href="https://resume.shaneossa.com" class="btn-primary">View Resume</a>
-          <a href="https://www.linkedin.com/in/shaneossa/" target="_blank" rel="noopener noreferrer" class="btn-secondary">LinkedIn</a>
-        </div>
+        <p class="tagline">Professional&middot;Percussionist&middot;DJ&middot;Dad</p>
       </div>
     </header>
 
     <section class="about">
       <h2>About</h2>
-      <p>
-        Living, working, and making music in the city that raised me.
-      </p>
+      <p>Living, working, and making music in the city that raised me.</p>
     </section>
 
     <section class="contact" id="contact">
@@ -38,6 +38,8 @@
         <a href="https://www.linkedin.com/in/shaneossa/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         &nbsp;&middot;&nbsp;
         <a href="https://resume.shaneossa.com">Resume</a>
+        &nbsp;&middot;&nbsp;
+        <a href="https://game.shaneossa.com">Play a game</a>
       </p>
     </section>
 
@@ -48,8 +50,10 @@
   </div>
 
   <script>
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Email reveal
     const user = 'shane.ossa';
     const domain = 'gmail.com';
     const emailLink = document.getElementById('email-link');
@@ -58,6 +62,74 @@
       this.href = 'mailto:' + user + '@' + domain;
       this.textContent = user + '@' + domain;
     });
+
+    // ── Tron 3D grid ──────────────────────────────────────────────────────────
+    const canvas = document.getElementById('grid');
+    const ctx = canvas.getContext('2d');
+
+    function resize() {
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    let offset = 0;
+    const SPEED = 0.4;
+    const COLOR = 'rgba(246, 130, 31, 0.18)';
+    const GLOW  = 'rgba(246, 130, 31, 0.5)';
+    const SPACING = 80;
+    const VP_Y = 0.45; // vanishing point vertical ratio
+
+    function drawGrid() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const W = canvas.width;
+      const H = canvas.height;
+      const vpX = W / 2;
+      const vpY = H * VP_Y;
+
+      // Horizontal lines (receding into distance)
+      for (let i = 0; i <= 20; i++) {
+        const t = (i / 20 + (offset / 400) % 1);
+        // perspective mapping: y goes from vpY to H
+        const y = vpY + (H - vpY) * Math.pow(t, 2);
+        if (y > H) continue;
+        const alpha = Math.pow(t, 1.5) * 0.6;
+        ctx.strokeStyle = `rgba(246, 130, 31, ${alpha * 0.5})`;
+        ctx.lineWidth = t < 0.5 ? 0.5 : 1;
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(W, y);
+        ctx.stroke();
+      }
+
+      // Vertical lines converging to vanishing point
+      const numV = 18;
+      for (let i = 0; i <= numV; i++) {
+        const x = (i / numV) * W;
+        const alpha = 0.3 - Math.abs((i / numV) - 0.5) * 0.3;
+        ctx.strokeStyle = `rgba(246, 130, 31, ${Math.max(alpha, 0.06)})`;
+        ctx.lineWidth = 0.8;
+        ctx.beginPath();
+        ctx.moveTo(vpX + (x - vpX) * 0.01, vpY);
+        ctx.lineTo(x, H);
+        ctx.stroke();
+      }
+
+      // Subtle horizon glow
+      const grad = ctx.createLinearGradient(0, vpY - 40, 0, vpY + 60);
+      grad.addColorStop(0, 'rgba(246,130,31,0)');
+      grad.addColorStop(0.5, 'rgba(246,130,31,0.08)');
+      grad.addColorStop(1, 'rgba(246,130,31,0)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, vpY - 40, W, 100);
+
+      offset += SPEED;
+      requestAnimationFrame(drawGrid);
+    }
+
+    drawGrid();
   </script>
 </body>
 </html>
